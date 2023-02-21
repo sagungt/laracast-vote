@@ -41,16 +41,18 @@
                 </div>
             </div>
 
-            <div class="flex px-2 py-6">
-                <a href="#" class="flex-none">
-                    <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar" class="w-14 h-14 rounded-xl">
-                </a>
-                <div class="mx-4">
+            <div class="flex flex-1 px-2 py-6">
+                <div class="flex-none">
+                    <a href="#">
+                        <img src="https://source.unsplash.com/200x200/?face&crop=face&v=1" alt="avatar" class="w-14 h-14 rounded-xl">
+                    </a>
+                </div>
+                <div class="w-full mx-4">
                     <h4 class="text-xl font-semibold">
                         <a href="#" class="hover:underline">Lorem ipsum dolor sit amet.</a>
                     </h4>
                     <div class="text-gray-600 mt-3 line-clamp-3">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe earum doloribus unde possimus qui repellat beatae quaerat vitae est. Quidem cum temporibus hic quas doloremque, laudantium totam cumque beatae est corporis nisi minus vero pariatur asperiores eum perspiciatis neque laborum aut, sit atque praesentium possimus aperiam distinctio accusantium. Placeat tenetur ea nesciunt hic aliquid nulla perferendis reprehenderit veritatis fugiat deleniti. Optio, facilis aut eum ipsam incidunt aliquid soluta doloribus consequuntur, dicta maiores blanditiis voluptatum culpa inventore dolore placeat iure corrupti dolorum esse vel hic! Repudiandae, officia cupiditate. Dolorem, eaque architecto dolor recusandae cum quae voluptatibus quo quidem, nemo quod suscipit.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </div>
 
                     <div class="flex items-center justify-between mt-6">
@@ -65,7 +67,7 @@
                             <div class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
                                 Open
                             </div>
-                            <button class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in py-2 px-3 flex items-center">
+                            <button class="relative bg-gray-100 hover:bg-gray-200 border rounded-full h-7 transition duration-150 ease-in py-2 px-3 flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                                 </svg>
