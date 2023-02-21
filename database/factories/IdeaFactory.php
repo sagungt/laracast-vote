@@ -20,6 +20,7 @@ class IdeaFactory extends Factory
         return [
             'user_id' => User::factory(),
             'category_id' => fake()->numberBetween(1, 4),
+            'status_id' => fake()->numberBetween(1, 5),
             'title' => fake()->words(4, true),
             'description' => fake()->paragraphs(5, true),
         ];

@@ -2,24 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreIdeaRequest;
-use App\Http\Requests\UpdateIdeaRequest;
-use App\Models\Idea;
+use App\Http\Requests\StoreStatusRequest;
+use App\Http\Requests\UpdateStatusRequest;
+use App\Models\Status;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
-class IdeaController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): Response
     {
-        return response()
-            ->view('idea.index', [
-                'ideas' => Idea::with('user', 'category', 'status')
-                    ->simplePaginate(Idea::PAGINATION_COUNT),
-            ]);
+        //
     }
 
     /**
@@ -33,7 +29,7 @@ class IdeaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreIdeaRequest $request): RedirectResponse
+    public function store(StoreStatusRequest $request): RedirectResponse
     {
         //
     }
@@ -41,18 +37,15 @@ class IdeaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Idea $idea): Response
+    public function show(Status $status): Response
     {
-        return response()
-            ->view('idea.show', [
-                'idea' => $idea,
-            ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Idea $idea): Response
+    public function edit(Status $status): Response
     {
         //
     }
@@ -60,7 +53,7 @@ class IdeaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateIdeaRequest $request, Idea $idea): RedirectResponse
+    public function update(UpdateStatusRequest $request, Status $status): RedirectResponse
     {
         //
     }
@@ -68,7 +61,7 @@ class IdeaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Idea $idea): RedirectResponse
+    public function destroy(Status $status): RedirectResponse
     {
         //
     }
