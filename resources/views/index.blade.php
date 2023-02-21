@@ -63,15 +63,28 @@
                             <div>&bull;</div>
                             <div class="text-gray-900">3 Comments</div>
                         </div>
-                        <div class="flex items-center space-x-2">
+                        <div
+                            x-data="{ isOpen: false }"
+                            class="flex items-center space-x-2"
+                        >
                             <div class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
                                 Open
                             </div>
-                            <button class="relative bg-gray-100 hover:bg-gray-200 border rounded-full h-7 transition duration-150 ease-in py-2 px-3 flex items-center">
+                            <button
+                                x-on:click="isOpen = !isOpen"
+                                class="relative bg-gray-100 hover:bg-gray-200 border rounded-full h-7 transition duration-150 ease-in py-2 px-3 flex items-center"
+                            >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                                 </svg>
-                                <ul class="absolute top-6 ml-8 w-44 text-left font-semibold bg-white shadow-dialog rounded-xl py-3">
+                                <ul
+                                    x-cloak
+                                    x-transition.origin.top.left
+                                    x-show="isOpen"
+                                    x-on:click.away="isOpen = false"
+                                    x-on:keydown.escape.window="isOpen = false"
+                                    class="absolute top-6 ml-8 w-44 text-left font-semibold bg-white shadow-dialog rounded-xl py-3"
+                                >
                                     <li>
                                         <a href="#" class="hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in block">Mark as Spam</a>
                                     </li>
