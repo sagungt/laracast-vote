@@ -18,7 +18,7 @@ class StatusFactory extends Factory
     {
         return [
             'name' => fake()->words(2, true),
-            'classes' => fake()->words(2, true),
+            'classes' => 'bg-gray-200',
         ];
     }
 }
