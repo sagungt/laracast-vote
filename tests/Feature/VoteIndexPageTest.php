@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Http\Livewire\IdeaIndex;
+use App\Http\Livewire\IdeasIndex;
 use App\Models\Category;
 use App\Models\Idea;
 use App\Models\Status;
@@ -36,7 +37,7 @@ class VoteIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function index_page_correctly_receive_votes_count()
+    public function ideas_index_livewire_component_correctly_receive_votes_count()
     {
         $user_a = User::factory()->create();
         $user_b = User::factory()->create();
@@ -61,7 +62,7 @@ class VoteIndexPageTest extends TestCase
             'user_id' => $user_b->id,
         ]);
 
-        $this->get(route('idea.index', $idea))
+        Livewire::test(IdeasIndex::class)
             ->assertViewHas('ideas', function ($ideas) {
                 return $ideas->first()->votes_count == 2;
             });
@@ -111,14 +112,12 @@ class VoteIndexPageTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        $response = $this->actingAs($user)
-            ->get(route('idea.index'));
-
-        $idea_with_votes = $response['ideas']->items()[0];
+        $idea->votes_count = 1;
+        $idea->voted_by_user = 1;
 
         Livewire::actingAs($user)
             ->test(IdeaIndex::class, [
-                'idea' => $idea_with_votes,
+                'idea' => $idea,
                 'votes_count' => 5,
             ])
             ->assertSet('has_voted', true)
@@ -207,10 +206,8 @@ class VoteIndexPageTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        $response = $this->actingAs($user)
-            ->get(route('idea.index'));
-
-        $idea_with_votes = $response['ideas']->items()[0];
+        $idea->votes_count = 1;
+        $idea->voted_by_user = 1;
 
         $this->assertDatabaseHas('votes', [
             'user_id' => $user->id,
@@ -219,7 +216,7 @@ class VoteIndexPageTest extends TestCase
 
         Livewire::actingAs($user)
             ->test(IdeaIndex::class, [
-                'idea' => $idea_with_votes,
+                'idea' => $idea,
                 'votes_count' => 5,
             ])
             ->call('vote')
