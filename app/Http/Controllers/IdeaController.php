@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreIdeaRequest;
 use App\Http\Requests\UpdateIdeaRequest;
 use App\Models\Idea;
+use App\Models\Vote;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
@@ -18,6 +19,11 @@ class IdeaController extends Controller
         return response()
             ->view('idea.index', [
                 'ideas' => Idea::with('user', 'category', 'status')
+                    ->addSelect([
+                        'voted_by_user' => Vote::select('id')
+                            ->where('user_id', auth()->id())
+                            ->whereColumn('idea_id', 'ideas.id')        
+                    ])
                     ->withCount('votes')
                     ->orderBy('created_at', 'desc')
                     ->simplePaginate(Idea::PAGINATION_COUNT),
