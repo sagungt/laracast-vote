@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Category;
 use App\Models\Idea;
 use App\Models\Status;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -23,6 +24,7 @@ class ShowIdeasTest extends TestCase
         $status_considering = Status::factory()->create(['name' => 'Considering', 'classes' => 'bg-purple text-white']);
 
         $idea_one = Idea::factory()->create([
+            'user_id' => User::factory(),
             'title' => 'My First Idea',
             'category_id' => $category_one->id,
             'status_id' => $status_open->id,
@@ -30,6 +32,7 @@ class ShowIdeasTest extends TestCase
         ]);
 
         $idea_two = Idea::factory()->create([
+            'user_id' => User::factory(),
             'title' => 'My Second Idea',
             'category_id' => $category_two->id,
             'status_id' => $status_considering->id,
@@ -43,14 +46,14 @@ class ShowIdeasTest extends TestCase
         $response->assertSee($idea_one->description);
         $response->assertSee($category_one->name);
         $response->assertSee('<div class="bg-gray-200 text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
-                                    Open
-                                </div>', false);
+                        Open
+                    </div>', false);
         $response->assertSee($idea_two->title);
         $response->assertSee($idea_two->description);
         $response->assertSee($category_two->name);
         $response->assertSee('<div class="bg-purple text-white text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
-                                    Considering
-                                </div>', false);
+                        Considering
+                    </div>', false);
     }
 
     /** @test */
@@ -60,6 +63,7 @@ class ShowIdeasTest extends TestCase
         $status_open = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
 
         $idea = Idea::factory()->create([
+            'user_id' => User::factory(),
             'title' => 'My First Idea',
             'category_id' => $category->id,
             'status_id' => $status_open->id,
@@ -83,6 +87,7 @@ class ShowIdeasTest extends TestCase
         $status_open = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
 
         Idea::factory(Idea::PAGINATION_COUNT + 1)->create([
+            'user_id' => User::factory(),
             'category_id' => Category::factory(),
             'status_id' => $status_open->id,
         ]);
@@ -112,6 +117,7 @@ class ShowIdeasTest extends TestCase
         $status_open = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
 
         $idea_one = Idea::factory()->create([
+            'user_id' => User::factory(),
             'title' => 'My First Idea',
             'category_id' => Category::factory(),
             'status_id' => $status_open->id,
@@ -119,6 +125,7 @@ class ShowIdeasTest extends TestCase
         ]);
 
         $idea_two = Idea::factory()->create([
+            'user_id' => User::factory(),
             'title' => 'My First Idea',
             'category_id' => Category::factory(),
             'status_id' => $status_open->id,
