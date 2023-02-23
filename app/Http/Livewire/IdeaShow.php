@@ -15,8 +15,20 @@ class IdeaShow extends Component
 
     protected $listeners = [
         'statusWasUpdated',
-        'ideaWasUpdated'
+        'ideaWasUpdated',
+        'ideaWasMarkedAsSpam',
+        'ideaWasMarkedAsNotSpam',
     ];
+
+    public function ideaWasMarkedAsSpam()
+    {
+        $this->idea->refresh();
+    }
+
+    public function ideaWasMarkedAsNotSpam()
+    {
+        $this->idea->refresh();
+    }
 
     public function statusWasUpdated()
     {

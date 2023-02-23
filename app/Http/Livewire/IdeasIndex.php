@@ -72,19 +72,30 @@ class IdeasIndex extends Component
         return view('livewire.ideas-index', [
                 'ideas' => Idea::with('user', 'category', 'status')
                     ->when($this->status && $this->status !== 'All', function ($query) use ($statuses) {
-                        return $query->where('status_id', $statuses->get($this->status));
+                        return $query
+                            ->where('status_id', $statuses->get($this->status));
                     })
                     ->when($this->category && $this->category !== 'All Categories', function ($query) use ($categories) {
-                        return $query->where('category_id', $categories->pluck('id', 'name')->get($this->category));
+                        return $query
+                            ->where('category_id', $categories->pluck('id', 'name')
+                            ->get($this->category));
                     })
                     ->when($this->filter && $this->filter === 'Top Voted', function ($query) {
-                        return $query->orderByDesc('votes_count');
+                        return $query
+                            ->orderByDesc('votes_count');
                     })
                     ->when($this->filter && $this->filter === 'My Ideas', function ($query) {
-                        return $query->where('user_id', auth()->id());
+                        return $query
+                            ->where('user_id', auth()->id());
+                    })
+                    ->when($this->filter && $this->filter === 'Spam Ideas', function ($query) {
+                        return $query
+                            ->where('spam_reports', '>', 0)
+                                ->orderByDesc('spam_reports');
                     })
                     ->when(strlen($this->search) >= 3, function ($query) {
-                        return $query->where('title', 'like', '%' . $this->search . '%');
+                        return $query
+                            ->where('title', 'like', '%' . $this->search . '%');
                     })
                     ->addSelect([
                         'voted_by_user' => Vote::select('id')
