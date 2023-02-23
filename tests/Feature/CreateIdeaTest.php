@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\Status;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -80,6 +79,11 @@ class CreateIdeaTest extends TestCase
         
         $this->assertDatabaseHas('ideas', [
             'title' => 'My First Idea',
+        ]);
+
+        $this->assertDatabaseHas('votes', [
+            'idea_id' => 1,
+            'user_id' => 1,
         ]);
     }
 
