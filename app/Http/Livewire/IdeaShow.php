@@ -15,9 +15,15 @@ class IdeaShow extends Component
 
     protected $listeners = [
         'statusWasUpdated',
+        'ideaWasUpdated'
     ];
 
     public function statusWasUpdated()
+    {
+        $this->idea->refresh();
+    }
+
+    public function ideaWasUpdated()
     {
         $this->idea->refresh();
     }

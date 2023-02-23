@@ -48,18 +48,20 @@
                                 x-on:keydown.escape.window="isOpen = false"
                                 class="absolute right-0 z-10 py-3 ml-8 font-semibold text-left bg-white top-6 w-44 shadow-dialog rounded-xl md:ml-8 md:top-6 md:left-0"
                             >
-                                <li>
-                                    <a
-                                        @click.prevent="
-                                            isOpen = false;
-                                            $dispatch('custom-show-edit-modal');
-                                        "
-                                        href="#"
-                                        class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100"
-                                    >
-                                        Edit Idea
-                                    </a>
-                                </li>
+                                @can('update', $idea)
+                                    <li>
+                                        <a
+                                            @click.prevent="
+                                                isOpen = false;
+                                                $dispatch('custom-show-edit-modal');
+                                            "
+                                            href="#"
+                                            class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100"
+                                        >
+                                            Edit Idea
+                                        </a>
+                                    </li>
+                                @endcan
                                 <li>
                                     <a
                                         href="#"
