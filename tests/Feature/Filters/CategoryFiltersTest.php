@@ -20,15 +20,15 @@ class CategoryFiltersTest extends TestCase
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
-        $ideaOne = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryOne->id,
         ]);
 
-        $ideaTwo = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryOne->id,
         ]);
 
-        $ideaThree = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryTwo->id,
         ]);
 
@@ -46,15 +46,15 @@ class CategoryFiltersTest extends TestCase
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
-        $ideaOne = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryOne->id,
         ]);
 
-        $ideaTwo = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryOne->id,
         ]);
 
-        $ideaThree = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryTwo->id,
         ]);
 
@@ -75,22 +75,22 @@ class CategoryFiltersTest extends TestCase
         $statusOpen = Status::factory()->create(['name' => 'Open']);
         $statusConsidering = Status::factory()->create(['name' => 'Considering']);
 
-        $ideaOne = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryOne->id,
             'status_id' => $statusOpen->id,
         ]);
 
-        $ideaTwo = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryOne->id,
             'status_id' => $statusConsidering->id,
         ]);
 
-        $ideaThree = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryTwo->id,
             'status_id' => $statusOpen->id,
         ]);
 
-        $ideaFour = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryTwo->id,
             'status_id' => $statusConsidering->id,
         ]);
@@ -114,22 +114,22 @@ class CategoryFiltersTest extends TestCase
         $statusOpen = Status::factory()->create(['name' => 'Open']);
         $statusConsidering = Status::factory()->create(['name' => 'Considering']);
 
-        $ideaOne = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryOne->id,
             'status_id' => $statusOpen->id,
         ]);
 
-        $ideaTwo = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryOne->id,
             'status_id' => $statusConsidering->id,
         ]);
 
-        $ideaThree = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryTwo->id,
             'status_id' => $statusOpen->id,
         ]);
 
-        $ideaFour = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryTwo->id,
             'status_id' => $statusConsidering->id,
         ]);
@@ -149,15 +149,15 @@ class CategoryFiltersTest extends TestCase
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
-        $ideaOne = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryOne->id,
         ]);
 
-        $ideaTwo = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryOne->id,
         ]);
 
-        $ideaThree = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryTwo->id,
         ]);
 

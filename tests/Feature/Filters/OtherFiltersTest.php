@@ -22,8 +22,6 @@ class OtherFiltersTest extends TestCase
         $userB = User::factory()->create();
         $userC = User::factory()->create();
 
-        $categoryOne = Category::factory()->create(['name' => 'Category 1']);
-
         $ideaOne = Idea::factory()->create();
         $ideaTwo = Idea::factory()->create();
 
@@ -57,17 +55,17 @@ class OtherFiltersTest extends TestCase
         $user = User::factory()->create();
         $userB = User::factory()->create();
 
-        $ideaOne = Idea::factory()->create([
+        Idea::factory()->create([
             'user_id' => $user->id,
             'title' => 'My First Idea',
         ]);
 
-        $ideaTwo = Idea::factory()->create([
+        Idea::factory()->create([
             'user_id' => $user->id,
             'title' => 'My Second Idea',
         ]);
 
-        $ideaThree = Idea::factory()->create([
+        Idea::factory()->create([
             'user_id' => $userB->id,
             'title' => 'My Third Idea',
         ]);
@@ -160,6 +158,39 @@ class OtherFiltersTest extends TestCase
                     && $ideas->first()->user->id === $user->id
                     && $ideas->first()->title === 'My First Idea'
                     && $ideas->get(1)->title === 'My Second Idea';
+            });
+    }
+
+    /** @test */
+    public function spam_ideas_filter_works()
+    {
+        $user = User::factory()->admin()->create();
+        
+        Idea::factory()->create([
+            'spam_reports' => 1,
+            'title' => 'My First Idea',
+        ]);
+
+        Idea::factory()->create([
+            'spam_reports' => 2,
+            'title' => 'My Second Idea',
+        ]);
+
+        Idea::factory()->create([
+            'spam_reports' => 3,
+            'title' => 'My Third Idea',
+        ]);
+        
+        Idea::factory()->create();
+
+        Livewire::actingAs($user)
+            ->test(IdeasIndex::class)
+            ->set('filter', 'Spam Ideas')
+            ->assertViewHas('ideas', function ($ideas) {
+                return $ideas->count() === 3
+                    && $ideas->first()->title === 'My Third Idea'
+                    && $ideas->get(1)->title === 'My Second Idea'
+                    && $ideas->get(2)->title === 'My First Idea';
             });
     }
 }

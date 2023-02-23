@@ -24,11 +24,11 @@ class SearchFilterTest extends TestCase
             'title' => 'My First Idea',
         ]);
 
-        $ideaTwo = Idea::factory()->create([
+        Idea::factory()->create([
             'title' => 'My Second Idea',
         ]);
 
-        $ideaThree = Idea::factory()->create([
+        Idea::factory()->create([
             'title' => 'My Third Idea',
         ]);
 
@@ -72,17 +72,17 @@ class SearchFilterTest extends TestCase
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
         $categoryTwo = Category::factory()->create(['name' => 'Category 2']);
 
-        $ideaOne = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryOne->id,
             'title' => 'My First Idea',
         ]);
 
-        $ideaTwo = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryOne->id,
             'title' => 'My Second Idea',
         ]);
 
-        $ideaThree = Idea::factory()->create([
+        Idea::factory()->create([
             'category_id' => $categoryTwo->id,
             'title' => 'My Third Idea',
         ]);

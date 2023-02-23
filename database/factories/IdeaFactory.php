@@ -25,6 +25,7 @@ class IdeaFactory extends Factory
             'status_id' => Status::factory(),
             'title' => fake()->words(4, true),
             'description' => fake()->paragraphs(5, true),
+            'spam_reports' => 0,
         ];
     }
 

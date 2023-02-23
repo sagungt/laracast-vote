@@ -3,15 +3,12 @@
 namespace Tests\Feature;
 
 use App\Http\Livewire\DeleteIdea;
-use App\Http\Livewire\EditIdea;
 use App\Http\Livewire\IdeaShow;
-use App\Models\Category;
 use App\Models\Idea;
 use App\Models\User;
 use App\Models\Vote;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
-use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
 class DeleteIdeaTest extends TestCase
@@ -33,7 +30,7 @@ class DeleteIdeaTest extends TestCase
     }
 
     /** @test */
-    public function do_not_show_edit_idea_livewire_component_when_user_does_not_have_authorization()
+    public function do_not_show_delete_idea_livewire_component_when_user_does_not_have_authorization()
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();
@@ -123,7 +120,7 @@ class DeleteIdeaTest extends TestCase
     }
 
     /** @test */
-    public function deleting_an_idea_does_not_show_on_menu_when_user_has_authorization()
+    public function deleting_an_idea_does_not_show_on_menu_when_user_does_not_have_authorization()
     {
         $user = User::factory()->create();
         
