@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Jobs\NotifyAllVoters;
 use App\Models\Idea;
+use App\Models\Status;
 use Livewire\Component;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -32,7 +33,7 @@ class SetStatus extends Component
             NotifyAllVoters::dispatch($this->idea);
         }
 
-        $this->emit('statusWasUpdated');
+        $this->emit('statusWasUpdated', 'Status was updated to ' . Status::find($this->status)->name .'!');
     }
 
     public function render()
