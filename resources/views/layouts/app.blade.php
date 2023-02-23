@@ -98,4 +98,5 @@
             </div>
         </div>
     </main>
+    @stack('modals')
 </html>
