@@ -31,13 +31,15 @@
                         <div class="{{ $idea->status->classes }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">
                             {{ $idea->status->name }}
                         </div>
-                        <button
-                            x-on:click="isOpen = !isOpen"
-                            class="relative flex items-center px-3 py-2 transition duration-150 ease-in bg-gray-100 border rounded-full hover:bg-gray-200 h-7"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                            </svg>
+                        <div class="relative">
+                            <button
+                                x-on:click="isOpen = !isOpen"
+                                class="relative flex items-center px-3 py-2 transition duration-150 ease-in bg-gray-100 border rounded-full hover:bg-gray-200 h-7"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                                </svg>
+                            </button>
                             <ul
                                 x-cloak
                                 x-transition.origin.top.left
@@ -47,13 +49,16 @@
                                 class="absolute right-0 z-10 py-3 ml-8 font-semibold text-left bg-white top-6 w-44 shadow-dialog rounded-xl md:ml-8 md:top-6 md:left-0"
                             >
                                 <li>
-                                    <a href="#" class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100">Mark as Spam</a>
+                                    <a href="#" class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100">Edit Idea</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100">Delete Post</a>
+                                    <a href="#" class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100">Delete Idea</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100">Mark as Spam</a>
                                 </li>
                             </ul>
-                        </button>
+                        </div>
                     </div>
 
                     <div class="flex mt-4 md:hidden md:mt-0">
