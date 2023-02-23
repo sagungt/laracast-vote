@@ -34,6 +34,8 @@ class EditIdea extends Component
             abort(Response::HTTP_FORBIDDEN);
         }
 
+        $this->validate();
+
         $this->idea->update([
             'title' => $this->title,
             'category_id' => $this->category,
