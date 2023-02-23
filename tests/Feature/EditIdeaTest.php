@@ -63,7 +63,7 @@ class EditIdeaTest extends TestCase
     }
 
     /** @test */
-    public function editint_an_idea_works_when_user_has_authorization()
+    public function editing_an_idea_works_when_user_has_authorization()
     {
         $user = User::factory()->create();
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
@@ -91,7 +91,7 @@ class EditIdeaTest extends TestCase
     }
 
     /** @test */
-    public function editint_an_idea_does_not_work_when_user_does_not_have_authorization_because_different_user_created_idea()
+    public function editing_an_idea_does_not_work_when_user_does_not_have_authorization_because_different_user_created_idea()
     {
         $userA = User::factory()->create();
         $userB = User::factory()->create();
@@ -114,7 +114,7 @@ class EditIdeaTest extends TestCase
     }
 
     /** @test */
-    public function editint_an_idea_does_not_work_when_user_does_not_have_authorization_because_idea_was_created_longer_than_an_hour_ago()
+    public function editing_an_idea_does_not_work_when_user_does_not_have_authorization_because_idea_was_created_longer_than_an_hour_ago()
     {
         $user = User::factory()->create();
         $categoryOne = Category::factory()->create(['name' => 'Category 1']);
@@ -137,7 +137,7 @@ class EditIdeaTest extends TestCase
     }
 
     /** @test */
-    public function editint_an_idea_shows_on_menu_when_user_has_authorization()
+    public function editing_an_idea_shows_on_menu_when_user_has_authorization()
     {
         $user = User::factory()->create();
         
@@ -154,7 +154,7 @@ class EditIdeaTest extends TestCase
     }
 
     /** @test */
-    public function editint_an_idea_does_not_show_on_menu_when_user_has_authorization()
+    public function editing_an_idea_does_not_show_on_menu_when_user_has_authorization()
     {
         $user = User::factory()->create();
         
