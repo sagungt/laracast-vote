@@ -58,5 +58,9 @@
                 </div>
             </div> <!-- end comment-container --> --}}
         </div> <!-- end comments-container -->
+
+        <div class="my-8 md:ml-22">
+            {{ $comments->onEachSide(1)->links() }}
+        </div>
     @endif
 </div>
