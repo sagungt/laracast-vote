@@ -5,11 +5,32 @@
         Livewire.on('commentWasAdded', () => {
             isOpen = false;
         });
+
+        Livewire.hook('message.processed', (message, component) => {
+            if (
+                message.updateQueue[0].payload.event === 'commentWasAdded'
+                && message.component.fingerprint.name === 'idea-comments'
+            ) {
+                lastComment = document.querySelector('.comment-container:last-child');
+                lastComment.scrollIntoView({ behavior: 'smooth' });
+                lastComment.classList.toggle('bg-green-50');
+                lastComment.classList.toggle('bg-white');
+                setTimeout(() => {
+                    lastComment.classList.toggle('bg-green-50');
+                    lastComment.classList.toggle('bg-white');
+                }, 5000)
+            }
+        });
     "
     class="relative"
 >
     <button
-        x-on:click="isOpen = !isOpen"
+        x-on:click="
+            isOpen = !isOpen;
+            if (isOpen) {
+                $nextTick(() => $refs.comment.focus());
+            }
+        "
         type="button"
         class="flex items-center justify-center w-32 px-6 py-3 text-sm font-semibold text-white transition duration-150 ease-in border h-11 bg-blue rounded-xl border-blue hover:bg-blue-hover"
     >
@@ -26,7 +47,17 @@
         @auth
             <form wire:submit.prevent="addComment" action="" method="post" class="px-4 py-6 space-y-4">
                 <div>
-                    <textarea wire:model="comment" name="post_comment" id="post_comment" cols="30" rows="4" class="w-full px-4 py-2 text-sm bg-gray-100 border-none rounded-xl placeholder:text-gray-900" placeholder="Go ahead, don't be shy. Share your thoughts..." required></textarea>
+                    <textarea
+                        x-ref="comment"
+                        wire:model="comment"
+                        name="post_comment"
+                        id="post_comment"
+                        cols="30"
+                        rows="4"
+                        class="w-full px-4 py-2 text-sm bg-gray-100 border-none rounded-xl placeholder:text-gray-900"
+                        placeholder="Go ahead, don't be shy. Share your thoughts..."
+                        required
+                    ></textarea>
 
                     @error('comment')
                         <p class="text-red text-xs mt-1">
