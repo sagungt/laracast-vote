@@ -18,7 +18,13 @@ class IdeaShow extends Component
         'ideaWasUpdated',
         'ideaWasMarkedAsSpam',
         'ideaWasMarkedAsNotSpam',
+        'commentWasAdded'
     ];
+
+    public function commentWasAdded()
+    {
+        $this->idea->refresh();
+    }
 
     public function ideaWasMarkedAsSpam()
     {

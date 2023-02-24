@@ -33,6 +33,7 @@
                 'ideaWasMarkedAsSpam',
                 'ideaWasMarkedAsNotSpam',
                 'statusWasUpdated',
+                'commentWasAdded'
             ].forEach((event) => {
                 Livewire.on(event, (message) => showNotification(message));
             });
