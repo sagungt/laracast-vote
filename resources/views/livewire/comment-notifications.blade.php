@@ -1,4 +1,5 @@
 <div
+    wire:poll="getNotificationCount"
     class="relative"
     x-data="{ isOpen: false }"
 >
