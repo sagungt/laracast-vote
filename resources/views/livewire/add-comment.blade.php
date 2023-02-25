@@ -7,12 +7,15 @@
         });
 
         Livewire.hook('message.processed', (message, component) => {
+            {{-- Pagination --}}
             if (
                 ['gotoPage', 'previousPage', 'nextPage'].includes(message.updateQueue[0].method)
             ) {
-                firstComment = document.querySelector('.comment-container:first-child')
-                firstComment.scrollIntoView({ behavior: 'smooth'})
+                firstComment = document.querySelector('.comment-container:first-child');
+                firstComment.scrollIntoView({ behavior: 'smooth'});
             }
+
+            {{-- Adding Comment --}}
             if (['commentWasAdded', 'statusWasUpdated'].includes(message.updateQueue[0].payload.event)
                 && message.component.fingerprint.name === 'idea-comments'
             ) {
@@ -23,9 +26,20 @@
                 setTimeout(() => {
                     lastComment.classList.toggle('bg-green-50');
                     lastComment.classList.toggle('bg-white');
-                }, 5000)
+                }, 5000);
             }
         });
+
+        @if (session('scrollToComment'))
+            commentToScrollTp = document.querySelector('#comment-{{ session('scrollToComment') }}');
+            commentToScrollTp.scrollIntoView({ behavior: 'smooth' });
+            commentToScrollTp.classList.toggle('bg-green-50');
+            commentToScrollTp.classList.toggle('bg-white');
+            setTimeout(() => {
+                commentToScrollTp.classList.toggle('bg-green-50');
+                commentToScrollTp.classList.toggle('bg-white');
+            }, 5000);
+        @endif
     "
     class="relative"
 >
