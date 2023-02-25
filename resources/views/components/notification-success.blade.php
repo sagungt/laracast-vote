@@ -8,6 +8,7 @@
     x-cloak
     x-data="{
         isOpen: false,
+        isError: @if ($type === 'error') true @else false @endif,
         messageToDisplay: '{{ $messageToDisplay }}',
         showNotification(message) {
             this.isOpen = true;
@@ -34,30 +35,30 @@
                 'ideaWasMarkedAsSpam',
                 'ideaWasMarkedAsNotSpam',
                 'statusWasUpdated',
+                'statusWasUpdatedError',
                 'commentWasAdded',
                 'commentWasUpdated',
                 'commentWasDeleted',
                 'commentWasMarkedAsSpam',
                 'commentWasMarkedAsNotSpam',
             ].forEach((event) => {
-                Livewire.on(event, (message) => showNotification(message));
+                Livewire.on(event, (message) => {
+                    isError = event === 'statusWasUpdatedError';
+                    showNotification(message);
+                });
             });
         @endif
     "
     class="flex justify-between z-20 max-w-xs sm:max-w-sm w-full fixed bottom-0 right-0 bg-white rounded-xl shadow-lg border px-4 py-5 mx-2 md:mx-6 my-8"
 >
     <div class="flex items-center">
-        @if ($type === 'success')
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        @endif
-        
-        @if ($type === 'error')
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-red w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        @endif
+        <svg x-show="!isError" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-green w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+    
+        <svg x-show="isError" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-red w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
         <span class="ml-2 font-semibold text-gray-500 text-sm smtext-base" x-text="messageToDisplay"></span>
     </div>
     <button x-on:click="isOpen = false" class="text-gray-400 hover:text-gray-500">

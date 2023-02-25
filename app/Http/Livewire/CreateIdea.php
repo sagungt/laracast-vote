@@ -5,13 +5,12 @@ namespace App\Http\Livewire;
 use App\Http\Livewire\Traits\WithAuthRedirect;
 use App\Models\Category;
 use App\Models\Idea;
-use App\Models\Vote;
 use Livewire\Component;
 use Symfony\Component\HttpFoundation\Response;
 
 class CreateIdea extends Component
 {
-    use WithAuthRedirect;
+    use WithAuthRedirect, WithAuthRedirect;
     
     public $title;
     public $category = 1;

@@ -60,7 +60,7 @@ class ShowIdeasTest extends TestCase
 
         $response->assertSuccessful();
         $response->assertSee($idea->title);
-        $response->assertSee($idea->description);
+        $response->assertSee(nl2br($idea->description), false);
         $response->assertSee($category->name);
         $response->assertSee('StatusUnique');
     }
