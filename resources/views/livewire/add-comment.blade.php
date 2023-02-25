@@ -106,13 +106,13 @@
                 </p>
                 <div class="flex items-center space-x-3 mt-8">
                     <a
-                        href="{{ route('login') }}"
+                        wire:click.prevent="redirectToLogin"
                         class="w-1/2 h-11 text-sm text-center bg-blue text-white font-semibold rounded-xl hover:bg-blue-hover transition duration-150 ease-in px-6 py-3"
                     >
                         Login
                     </a>
                     <a
-                        href="{{ route('register') }}"
+                        wire:click.prevent="redirectToRegister"
                         class="flex items-center justify-center w-1/2 h-11 text-xs text-center bg-gray-200 font-semibold border border-gray-200 rounded-xl hover:bg-gray-400 transition duration-150 ease-in px-6 py-3"
                     >
                         Register

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Livewire\Traits\WithAuthRedirect;
 use App\Models\Category;
 use App\Models\Idea;
 use App\Models\Status;
@@ -11,7 +12,7 @@ use Livewire\WithPagination;
 
 class IdeasIndex extends Component
 {
-    use WithPagination;
+    use WithPagination, WithAuthRedirect;
     
     public $status;
     public $category;
@@ -47,8 +48,8 @@ class IdeasIndex extends Component
     public function updatedFilter()
     {
         if ($this->filter === 'My Ideas') {
-            if (! auth()->check()) {
-                return redirect()->route('login');
+            if (auth()->guest()) {
+                return $this->redirectToLogin();
             }
         }
     }
