@@ -35,6 +35,7 @@
                 'statusWasUpdated',
                 'commentWasAdded',
                 'commentWasUpdated',
+                'commentWasDeleted',
             ].forEach((event) => {
                 Livewire.on(event, (message) => showNotification(message));
             });

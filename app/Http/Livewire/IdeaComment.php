@@ -11,7 +11,7 @@ class IdeaComment extends Component
     public $ideaUserId;
 
     protected $listeners = [
-        'commentWasUpdated'
+        'commentWasUpdated',
     ];
 
     public function commentWasUpdated()

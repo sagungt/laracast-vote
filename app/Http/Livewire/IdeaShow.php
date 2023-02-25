@@ -18,10 +18,16 @@ class IdeaShow extends Component
         'ideaWasUpdated',
         'ideaWasMarkedAsSpam',
         'ideaWasMarkedAsNotSpam',
-        'commentWasAdded'
+        'commentWasAdded',
+        'commentWasDeleted',
     ];
 
     public function commentWasAdded()
+    {
+        $this->idea->refresh();
+    }
+
+    public function commentWasDeleted()
     {
         $this->idea->refresh();
     }

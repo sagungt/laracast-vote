@@ -1,39 +1,35 @@
 <div>
-    @can('update', $idea)
-        @push('modals')
-            <livewire:edit-idea
-                :idea="$idea"
-            />
-        @endpush
-    @endcan
+    @push('modals')
+        @can('update', $idea)
+                <livewire:edit-idea
+                    :idea="$idea"
+                />
+        @endcan
     
-    @can('delete', $idea)
-        @push('modals')
+        @can('delete', $idea)
             <livewire:delete-idea
                 :idea="$idea"
             />
-        @endpush
-    @endcan
+        @endcan
     
-    @auth
-        @push('modals')
+        @auth
             <livewire:mark-idea-as-spam
                 :idea="$idea"
             />
-        @endpush
-    @endauth
+        @endauth
     
-    @admin
-        @push('modals')
+        @admin
             <livewire:mark-idea-as-not-spam
                 :idea="$idea"
             />
-        @endpush
-    @endadmin
+        @endadmin
 
-    @auth
-        @push('modals')
+        @auth
             <livewire:edit-comment />
-        @endpush
-    @endauth
+        @endauth
+
+        @auth
+            <livewire:delete-comment />
+        @endauth
+    @endpush
 </div>
