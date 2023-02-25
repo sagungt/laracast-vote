@@ -30,4 +30,10 @@
             />
         @endpush
     @endadmin
+
+    @auth
+        @push('modals')
+            <livewire:edit-comment />
+        @endpush
+    @endauth
 </div>
