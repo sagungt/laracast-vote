@@ -118,7 +118,7 @@ class DeleteCommentTest extends TestCase
     }
 
     /** @test */
-    public function editing_a_comment_does_not_shows_on_menu_when_user_does_not_have_authorization()
+    public function deleting_a_comment_does_not_shows_on_menu_when_user_does_not_have_authorization()
     {
         $user = User::factory()->create();
         $idea = Idea::factory()->create();

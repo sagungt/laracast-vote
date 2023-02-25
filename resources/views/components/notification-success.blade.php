@@ -36,6 +36,8 @@
                 'commentWasAdded',
                 'commentWasUpdated',
                 'commentWasDeleted',
+                'commentWasMarkedAsSpam',
+                'commentWasMarkedAsNotSpam',
             ].forEach((event) => {
                 Livewire.on(event, (message) => showNotification(message));
             });

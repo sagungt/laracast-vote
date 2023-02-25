@@ -104,7 +104,7 @@ class SpamManagementTest extends TestCase
         $this
             ->actingAs($user)
             ->get(route('idea.show', $idea))
-            ->assertDontSeeLivewire('marl-idea-as-not-spam');
+            ->assertDontSeeLivewire('mark-idea-as-not-spam');
     }
 
     /** @test */

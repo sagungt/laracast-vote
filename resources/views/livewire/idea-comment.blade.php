@@ -7,6 +7,13 @@
         </div>
         <div class="w-full md:mx-4">
             <div class="text-gray-600">
+                @admin
+                    @if($comment->spam_reports > 0)
+                        <div class="text-red mb-2">
+                            Spam Reports: {{ $comment->spam_reports }}
+                        </div>
+                    @endif
+                @endadmin
                 {{ $comment->body }}
             </div>
 
@@ -72,12 +79,32 @@
                                 @endcan
                                 <li>
                                     <a
+                                        @click.prevent="
+                                            isOpen = false;
+                                            Livewire.emit('setMarkAsSpamComment', {{ $comment->id }});
+                                        "
                                         href="#"
                                         class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100"
                                     >
                                         Mark as Spam
                                     </a>
                                 </li>
+                                @admin
+                                    @if ($comment->spam_reports > 0)
+                                        <li>
+                                            <a
+                                                @click.prevent="
+                                                    isOpen = false;
+                                                    Livewire.emit('setMarkAsNotSpamComment', {{ $comment->id }});
+                                                "
+                                                href="#"
+                                                class="block px-5 py-3 transition duration-150 ease-in hover:bg-gray-100"
+                                            >
+                                                Not Spam
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endadmin
                             </ul>
                         </div>
                     </div>

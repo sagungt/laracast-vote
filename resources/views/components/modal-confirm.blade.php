@@ -1,5 +1,5 @@
 @props([
-    'event-to-open-modal' => null,
+    'eventToOpenModal' => null,
     'livewireEventToOpenModal' => null,
     'event-to-close-modal',
     'modal-title',
@@ -13,7 +13,7 @@
     x-data="{ isOpen: false }"
     x-show="isOpen"
     @keydown.escape.window="isOpen = false"
-    @if (! $livewireEventToOpenModal)
+    @if ($eventToOpenModal)
         {{ '@' . $eventToOpenModal }}.window="
             isOpen = true;
             $nextTick(() => $refs.confirmButton.focus());
