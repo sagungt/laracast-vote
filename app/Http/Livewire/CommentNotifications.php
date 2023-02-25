@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CommentNotifications extends Component
 {
-    const NOTIFIATION_TRESHOLD = 20;
+    const NOTIFICATION_THRESHOLD = 20;
     public $notifications;
     public $notificationCount;
     public $isLoading;
@@ -30,8 +30,8 @@ class CommentNotifications extends Component
     {
         $this->notificationCount = auth()->user()->unreadNotifications()->count();
 
-        if ($this->notificationCount > self::NOTIFIATION_TRESHOLD) {
-            $this->notificationCount = self::NOTIFIATION_TRESHOLD . '+';
+        if ($this->notificationCount > self::NOTIFICATION_THRESHOLD) {
+            $this->notificationCount = self::NOTIFICATION_THRESHOLD . '+';
         }
     }
 
@@ -41,7 +41,7 @@ class CommentNotifications extends Component
             ->user()
             ->unreadNotifications()
             ->latest()
-            ->take(self::NOTIFIATION_TRESHOLD)
+            ->take(self::NOTIFICATION_THRESHOLD)
             ->get();
 
         $this->isLoading = false;
