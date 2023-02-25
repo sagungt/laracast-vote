@@ -23,7 +23,7 @@ class IdeaTest extends TestCase
         $user_b = User::factory()->create();
 
         $category = Category::factory()->create(['name' => 'Category 1']);
-        $status_open = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+        $status_open = Status::factory()->create(['name' => 'Open']);
 
         $idea = Idea::factory()->create([
             'user_id' => $user_a->id,
@@ -49,7 +49,7 @@ class IdeaTest extends TestCase
         $user = User::factory()->create();
 
         $category = Category::factory()->create(['name' => 'Category 1']);
-        $status_open = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+        $status_open = Status::factory()->create(['name' => 'Open']);
 
         $idea = Idea::factory()->create([
             'user_id' => $user->id,
@@ -70,7 +70,7 @@ class IdeaTest extends TestCase
         $user = User::factory()->create();
 
         $category = Category::factory()->create(['name' => 'Category 1']);
-        $status_open = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+        $status_open = Status::factory()->create(['name' => 'Open']);
 
         $idea = Idea::factory()->create([
             'user_id' => $user->id,
@@ -96,7 +96,7 @@ class IdeaTest extends TestCase
         $user = User::factory()->create();
 
         $category = Category::factory()->create(['name' => 'Category 1']);
-        $status_open = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+        $status_open = Status::factory()->create(['name' => 'Open']);
 
         $idea = Idea::factory()->create([
             'user_id' => $user->id,
@@ -122,7 +122,7 @@ class IdeaTest extends TestCase
         $user = User::factory()->create();
 
         $category = Category::factory()->create(['name' => 'Category 1']);
-        $status_open = Status::factory()->create(['name' => 'Open', 'classes' => 'bg-gray-200']);
+        $status_open = Status::factory()->create(['name' => 'Open']);
 
         $idea = Idea::factory()->create([
             'user_id' => $user->id,
